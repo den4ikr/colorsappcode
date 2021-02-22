@@ -4,7 +4,7 @@ import { removeColor } from "../../redux/main-reducer"
 
 const MainContainer = (props) => {
     return (
-        <Main { ...props } />
+        <Main { ...props } date-testid = "main" />
     )
 }
 

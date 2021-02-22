@@ -1,5 +1,5 @@
-import { MainReducer } from "../redux/main-reducer";
-import { createColor, removeColor, editColor } from "../redux/main-reducer";
+import { MainReducer } from "./main-reducer";
+import { createColor, removeColor, editColor } from "./main-reducer";
 
 
 const state = {

@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@material-ui/core";
+import { IconButton, Typography, Card, CardContent, CardActions } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { NavLink } from "react-router-dom";
@@ -12,7 +12,7 @@ export const Color = (props) => {
   };
 
   return (
-    <div
+    <Card
       style={{
         background: `linear-gradient(to right, ${props.firstColor}, ${props.secondColor})`,
         minHeight: "70px",
@@ -21,11 +21,11 @@ export const Color = (props) => {
         minWidth: "350px",
       }}
     >
-      <div className={style.subRow}>
+      <CardContent className={style.subRow}>
         <Typography className={style.item}>{props.firstColor}</Typography>
         <Typography className={style.item}>{props.secondColor}</Typography>
-      </div>
-      <div className={style.subRow}>
+      </CardContent>
+      <CardActions className={style.subRow}>
         <NavLink to = {`/edit/${props.id}`}>
             <IconButton className={style.item}>
             <EditIcon color="primary"/>
@@ -34,7 +34,7 @@ export const Color = (props) => {
         <IconButton className={style.item} onClick={removeColor}>
           <DeleteIcon color="secondary" />
         </IconButton>
-      </div>
-    </div>
+      </CardActions>
+    </Card>
   );
 };
