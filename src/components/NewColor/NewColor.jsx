@@ -27,7 +27,7 @@ export const NewColor = (props) => {
   }
 
   return (
-    <div>
+    <div className = {style.container} >
       <Formik
         initialValues={{
           firstColor: "",

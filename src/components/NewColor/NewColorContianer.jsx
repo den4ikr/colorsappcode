@@ -10,7 +10,7 @@ const NewColorContianer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-
+       
     }
 }
 

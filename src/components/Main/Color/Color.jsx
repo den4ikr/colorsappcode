@@ -26,10 +26,11 @@ export const Color = (props) => {
         <Typography className={style.item}>{props.secondColor}</Typography>
       </div>
       <div className={style.subRow}>
-        <IconButton className={style.item}>
-          <EditIcon color="primary"/>
-          <NavLink to = {`/edit/${props.id}`}>EDIT</NavLink>
-        </IconButton>
+        <NavLink to = {`/edit/${props.id}`}>
+            <IconButton className={style.item}>
+            <EditIcon color="primary"/>
+            </IconButton>
+        </NavLink>
         <IconButton className={style.item} onClick={removeColor}>
           <DeleteIcon color="secondary" />
         </IconButton>

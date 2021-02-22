@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import Button from "@material-ui/core/Button";
 import useStyle from "./EditPageStyle";
@@ -17,18 +18,31 @@ function validateColor(value) {
 export const EditPage = (props) => {
   const style = useStyle();
 
+  const history = useHistory();
+
+  const routeChange = () => {
+    let path = `/`;
+    history.push(path);
+  };
+
   let colorDetails = props.colors.filter(
     (c) => c.id == props.match.params.colorId
   )[0];
+
   return (
-    <div>
+    <div className = {style.container} >
       <Formik
         initialValues={{
           firstColor: `${colorDetails.firstColor}`,
           secondColor: `${colorDetails.secondColor}`,
         }}
         onSubmit={(values) => {
-          props.createColor(Date.now(), values.firstColor, values.secondColor);
+          props.editColor(
+            colorDetails.id,
+            values.firstColor,
+            values.secondColor
+          );
+          routeChange();
         }}
       >
         {({ errors, touched }) => (
@@ -64,7 +78,7 @@ export const EditPage = (props) => {
               fullWidth
               type="submit"
             >
-              Submit
+              Save Changes
             </Button>
           </Form>
         )}

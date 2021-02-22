@@ -13,5 +13,9 @@ export default makeStyles ( () => ({
     },
     btn: {
         marginTop: "25px",
+    },
+    container: {
+        marginLeft: "10px",
+        marginRight: "10px",
     }
 }) )
