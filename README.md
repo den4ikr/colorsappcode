@@ -1,3 +1,7 @@
+To set up and run app you should copy the link, open git-bush in some folder and run "git clone link". Open app in or IDE and run "nom install" or "yarn install" to create a "package.json" file. The you can run "npm start" or "yarn start" to open app in browser.
+This app does not save state to local storaeg. The reason is that if you have some local storage in your browser it will cause some bugs. Thats why i didnt save data to local storage.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
