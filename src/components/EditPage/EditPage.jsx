@@ -1,8 +1,6 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import useStyle from "./NewColorStyle";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import useStyle from "./EditPageStyle";
 
 function validateColor(value) {
   let error;
@@ -16,56 +14,57 @@ function validateColor(value) {
   return error;
 }
 
-export const NewColor = (props) => {
+export const EditPage = (props) => {
   const style = useStyle();
 
-  const history = useHistory();
-
-  const routeChange = () =>{ 
-    let path = `/`; 
-    history.push(path);
-  }
-
+  let colorDetails = props.colors.filter(
+    (c) => c.id == props.match.params.colorId
+  )[0];
   return (
     <div>
       <Formik
         initialValues={{
-          firstColor: "",
-          secondColor: "",
+          firstColor: `${colorDetails.firstColor}`,
+          secondColor: `${colorDetails.secondColor}`,
         }}
         onSubmit={(values) => {
-          props.createColor (Date.now (), values.firstColor, values.secondColor)
-          routeChange ()
+          props.createColor(Date.now(), values.firstColor, values.secondColor);
         }}
       >
         {({ errors, touched }) => (
           <Form>
             <div>
-                <Field
-                className = {style.input}
-                placeholder = "Enter first color"
+              <Field
+                className={style.input}
+                placeholder="Enter first color"
                 name="firstColor"
                 validate={validateColor}
                 pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
-                />
-                {errors.firstColor && touched.firstColor && (
+              />
+              {errors.firstColor && touched.firstColor && (
                 <div className={style.error}>{errors.firstColor}</div>
-                )}
+              )}
             </div>
             <div>
-                <Field
-                className = {style.input}
-                placeholder = "Enter second color"
+              <Field
+                className={style.input}
+                placeholder="Enter second color"
                 name="secondColor"
                 validate={validateColor}
                 pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
-                />
-                {errors.secondColor && touched.secondColor && (
+              />
+              {errors.secondColor && touched.secondColor && (
                 <div className={style.error}>{errors.secondColor}</div>
-                )}
+              )}
             </div>
-            <Button className = {style.btn} color="primary" variant="contained" fullWidth type="submit">
-                Submit
+            <Button
+              className={style.btn}
+              color="primary"
+              variant="contained"
+              fullWidth
+              type="submit"
+            >
+              Submit
             </Button>
           </Form>
         )}

@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 import { Main } from "./Main"
+import { removeColor } from "../../redux/main-reducer"
 
 const MainContainer = (props) => {
     return (
@@ -13,4 +14,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps)(MainContainer)
+export default connect (mapStateToProps, {removeColor})(MainContainer)
